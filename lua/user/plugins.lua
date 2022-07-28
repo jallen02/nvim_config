@@ -76,6 +76,9 @@ return packer.startup(function(use)
     -- QOL
     use "windwp/nvim-autopairs" -- autopair containers
 
+    -- git
+    use "lewis6991/gitsigns.nvim"
+
     -- Set up configuration after cloning packer.nvim
     -- Put this after ALL plugins
     if PACKER_BOOTSTRAP then
