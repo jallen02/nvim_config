@@ -85,6 +85,12 @@ return packer.startup(function(use)
     use "akinsho/bufferline.nvim" -- bufferline
     use "moll/vim-bbye" -- close buffers without closing windows
 
+    -- linting
+    use "jose-elias-alvarez/null-ls.nvim" -- linting/formatting
+
+    -- terminal
+    use "akinsho/toggleterm.nvim" -- toggleterm
+
     -- Set up configuration after cloning packer.nvim
     -- Put this after ALL plugins
     if PACKER_BOOTSTRAP then
