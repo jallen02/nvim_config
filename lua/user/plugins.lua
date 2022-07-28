@@ -44,6 +44,7 @@ return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Packer manages packer
     use "nvim-lua/popup.nvim" -- implementation of popup API from vim in Neovim
     use "nvim-lua/plenary.nvim" -- useful lua functions used by other plugins
+    use "kyazdani42/nvim-web-devicons" -- icons for tree
 
     -- Colorschemes
     use "sainnhe/sonokai"
@@ -79,9 +80,10 @@ return packer.startup(function(use)
     -- git
     use "lewis6991/gitsigns.nvim"
 
-    -- tree
-    use "kyazdani42/nvim-web-devicons" -- icons for tree
+    -- file navigation
     use "kyazdani42/nvim-tree.lua" -- nvim tree
+    use "akinsho/bufferline.nvim" -- bufferline
+    use "moll/vim-bbye" -- close buffers without closing windows
 
     -- Set up configuration after cloning packer.nvim
     -- Put this after ALL plugins

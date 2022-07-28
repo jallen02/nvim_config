@@ -31,6 +31,7 @@ vim.opt.signcolumn = "yes" -- always have sign column on screen so text doesn't 
 vim.opt.wrap = false -- don't wrap lines
 vim.opt.scrolloff = 8 -- keep 8 characters past cursor on screen
 vim.opt.sidescrolloff = 8
+vim.opt.mouse = "a" -- can use your mouse (...why? to close buffers!)
 
 vim.opt.shortmess:append "c" -- don't give ins-completion-menu messages
 
