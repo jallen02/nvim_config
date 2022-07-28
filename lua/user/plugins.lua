@@ -79,6 +79,10 @@ return packer.startup(function(use)
     -- git
     use "lewis6991/gitsigns.nvim"
 
+    -- tree
+    use "kyazdani42/nvim-web-devicons" -- icons for tree
+    use "kyazdani42/nvim-tree.lua" -- nvim tree
+
     -- Set up configuration after cloning packer.nvim
     -- Put this after ALL plugins
     if PACKER_BOOTSTRAP then
