@@ -14,7 +14,7 @@ configs.setup {
     },
     indent = {
         enable = true,
-        disable = { "" },
+        disable = { "python" },
     },
     rainbow = {
         enable = true,
