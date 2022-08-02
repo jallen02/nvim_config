@@ -45,6 +45,7 @@ return packer.startup(function(use)
     use "nvim-lua/popup.nvim" -- implementation of popup API from vim in Neovim
     use "nvim-lua/plenary.nvim" -- useful lua functions used by other plugins
     use "kyazdani42/nvim-web-devicons" -- icons for tree
+    use "simrat39/rust-tools.nvim" -- rust tooling
 
     -- Colorschemes
     use "sainnhe/sonokai"
