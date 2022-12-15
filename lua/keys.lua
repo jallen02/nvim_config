@@ -19,3 +19,7 @@ map("n", "<leader>e", "<cmd>:NvimTreeToggle<CR>")
 
 -- esc in normal mode clears highlights
 map("n", "<Esc>", "<cmd>:noh<CR>")
+
+-- ToggleTerm
+map("n", "<leader>t", "<cmd>:ToggleTerm<CR>")
+map("n", "<leader>g", "<cmd>:TermExec direction='float' cmd='gitui'<CR>")
