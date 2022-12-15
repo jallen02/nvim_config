@@ -21,5 +21,5 @@ map("n", "<leader>e", "<cmd>:NvimTreeToggle<CR>")
 map("n", "<Esc>", "<cmd>:noh<CR>")
 
 -- ToggleTerm
-map("n", "<leader>t", "<cmd>:ToggleTerm<CR>")
-map("n", "<leader>g", "<cmd>:TermExec direction='float' cmd='gitui'<CR>")
+map("n", "<leader>t", "<cmd>:1ToggleTerm<CR>")
+map("n", "<leader>g", "<cmd>:2TermExec direction='float' cmd='gitui'<CR>")
