@@ -30,6 +30,9 @@ vim.opt.termguicolors = true
 
 vim.g.mapleader = " "
 
+-- disable swapfile
+vim.opt.swapfile = false
+
 -- Fixed column for diagnostics to appear
 -- Show autodiagnostic popup on cursor hover_range
 -- Goto previous / next diagnostic warning / error
