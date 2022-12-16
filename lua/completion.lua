@@ -1,6 +1,34 @@
 -- Completion Plugin Setup
 local cmp = require('cmp')
 
+local kind_icons = {
+  Text = "",
+  Method = "m",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "",
+  Interface = "",
+  Module = "",
+  Property = "",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = "",
+}
+
 cmp.setup({
     -- Enable LSP snippets
     snippet = {
@@ -38,13 +66,14 @@ cmp.setup({
         documentation = cmp.config.window.bordered(),
     },
     formatting = {
-        fields = {'menu', 'abbr', 'kind'},
+        fields = {'kind', 'abbr', 'menu'},
         format = function(entry, item)
+            item.kind = string.format("%s", kind_icons[item.kind])
             local menu_icon ={
-                nvim_lsp = 'λ',
-                vsnip = '⋗',
-                buffer = 'Ω',
-                path = '',
+                nvim_lsp = '[LSP]',
+                vsnip = '[Snippet]',
+                buffer = '[Buffer]',
+                path = '[Path]',
             }
             item.menu = menu_icon[entry.source.name]
             return item
