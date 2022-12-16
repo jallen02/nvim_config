@@ -20,6 +20,9 @@ map("n", "<leader>e", "<cmd>:NvimTreeToggle<CR>")
 -- esc in normal mode clears highlights
 map("n", "<Esc>", "<cmd>:noh<CR>")
 
--- ToggleTerm
-map("n", "<leader>t", "<cmd>:1ToggleTerm<CR>")
-map("n", "<leader>g", "<cmd>:2TermExec direction='float' cmd='gitui'<CR>")
+-- C-u and C-d center the viewing window
+map("n", "<C-u>", "<C-u>zz")
+map("n", "<C-d>", "<C-d>zz")
+
+-- gitui toggle
+map("n", "<leader>g", "<cmd>:lua _GITUI_TOGGLE()<CR>")
