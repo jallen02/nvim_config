@@ -2,9 +2,9 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+require("plug")
 require("opts")
 require("keys")
-require("plug")
 require("vars")
 require("mason").setup()
 require("colorscheme")
