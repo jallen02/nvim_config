@@ -1,3 +1,8 @@
+-- This file comes directly from https://github.com/doublify/pre-commit-rust
+-- Any additional configurations should be in separate files that are included at the end of this file.
+require('jallen.keymaps')
+require('jallen.settings')
+
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
