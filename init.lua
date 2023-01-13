@@ -1,7 +1,5 @@
 -- This file comes directly from https://github.com/doublify/pre-commit-rust
 -- Any additional configurations should be in separate files that are included at the end of this file.
-require('jallen.keymaps')
-require('jallen.settings')
 
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -320,7 +318,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('KK', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -429,5 +427,7 @@ cmp.setup {
   },
 }
 
+require('custom.keymaps')
+require('custom.settings')
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
