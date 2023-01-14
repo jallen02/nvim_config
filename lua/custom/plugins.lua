@@ -17,4 +17,15 @@ return function(use)
       require("nvim-tree").setup()
     end
   }
+
+  use {
+    'simrat39/rust-tools.nvim',
+    config = function()
+      require('rust-tools').setup()
+    end
+  }
+
+  use {
+    'github/copilot.vim',
+  }
 end
