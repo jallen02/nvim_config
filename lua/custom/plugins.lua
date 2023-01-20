@@ -20,9 +20,10 @@ return function(use)
 
   use {
     'simrat39/rust-tools.nvim',
-    config = function()
-      require('rust-tools').setup()
-    end
+  }
+
+  use {
+    'simrat39/inlay-hints.nvim',
   }
 
   use {
