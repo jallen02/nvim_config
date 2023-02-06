@@ -22,11 +22,11 @@ return function(use)
     'simrat39/rust-tools.nvim',
   }
 
-  use {
-    'simrat39/inlay-hints.nvim',
-  }
+  -- use {
+  --   'github/copilot.vim',
+  -- }
 
   use {
-    'github/copilot.vim',
+    'rust-lang/rust.vim'
   }
 end

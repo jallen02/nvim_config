@@ -8,6 +8,7 @@ end
 ---------------------------------------
 -- `jk` now exits insert mode
 map('i', 'jk', '<ESC>')
+map('i', "''", '`')
 
 --------------------------------------
 -- NORMAL MODE KEYMAPS

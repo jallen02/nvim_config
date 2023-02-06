@@ -143,9 +143,6 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-local ih = require("inlay-hints")
-ih.setup()
-
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -309,10 +306,6 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  local ih = require("inlay-hints")
-  ih.setup()
-  ih.on_attach(client, bufnr)
-
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
@@ -384,15 +377,48 @@ mason_lspconfig.setup_handlers {
     if server_name == "rust_analyzer" then
       require('rust-tools').setup {
         tools = {
-          on_initialized = function ()
-            ih.set_all()
-          end,
+          inlay_hints = {
+            auto = true,
+          },
         },
         server = {
           on_attach = function (client, bufnr)
             on_attach(client, bufnr)
           end,
+          settings = {
+            ["rust-analyzer"] = {
+              checkOnSave = {
+                command = "clippy",
+              }
+            }
+          }
         }
+      }
+    elseif server_name == "tailwindcss" then
+      require('lspconfig').tailwindcss.setup {
+        filetypes = {
+          "css",
+          "scss",
+          "sass",
+          "postcss",
+          "html",
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "svelte",
+          "vue",
+          "rust",
+        },
+        init_options = {
+          -- There you can set languages to be considered as different ones by tailwind lsp I guess same as includeLanguages in VSCod
+          userLanguages = {
+            rust = "html",
+          },
+        },
+        -- Here If any of files from list will exist tailwind lsp will activate.
+        root_dir = require 'lspconfig'.util.root_pattern('tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js',
+          'postcss.config.ts', 'windi.config.ts'),
       }
     else 
       require('lspconfig')[server_name].setup {
