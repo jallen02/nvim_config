@@ -8,3 +8,14 @@ vim.api.nvim_create_autocmd(
     group = auto_reload_group,
   }
 )
+
+-- remove trailing whitespace
+local remove_trailing_whitespace_group = vim.api.nvim_create_augroup("TrailingWhitespace", {clear = true})
+vim.api.nvim_create_autocmd(
+  {"BufWritePre"},
+  {
+    command = [[:%s/\s\+$//e]],
+    pattern = { "*" },
+    group = remove_trailing_whitespace_group,
+  }
+)
