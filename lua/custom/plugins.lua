@@ -29,4 +29,8 @@ return function(use)
   use {
     'rust-lang/rust.vim'
   }
+
+  use {
+    'ThePrimeagen/harpoon'
+  }
 end

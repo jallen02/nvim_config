@@ -26,3 +26,20 @@ map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 
+-- harpoon keymaps
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+map('n', '<leader>h', mark.add_file)
+map('n', '<leader>o', ui.toggle_quick_menu)
+map('n', '<leader>1', function() ui.nav_file(1) end)
+map('n', '<leader>2', function() ui.nav_file(2) end)
+map('n', '<leader>3', function() ui.nav_file(3) end)
+map('n', '<leader>4', function() ui.nav_file(4) end)
+map('n', '<leader>5', function() ui.nav_file(5) end)
+map('n', '<leader>6', function() ui.nav_file(6) end)
+map('n', '<leader>7', function() ui.nav_file(7) end)
+map('n', '<leader>8', function() ui.nav_file(8) end)
+map('n', '<leader>9', function() ui.nav_file(9) end)
+
+-- vim fugitive keymaps
