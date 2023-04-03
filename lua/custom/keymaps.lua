@@ -43,3 +43,7 @@ map('n', '<leader>8', function() ui.nav_file(8) end)
 map('n', '<leader>9', function() ui.nav_file(9) end)
 
 -- vim fugitive keymaps
+map('n', '<leader>gd', '<cmd>Git difftool<cr>')
+map('n', '<leader>gs', '<cmd>Git<cr>')
+map('n', '<leader>gc', '<cmd>Git commit<cr>')
+map('n', '<leader>gm', '<cmd>Gdiffsplit<cr>')
