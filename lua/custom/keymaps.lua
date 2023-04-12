@@ -49,4 +49,4 @@ map('n', '<leader>gc', '<cmd>Git commit<cr>')
 map('n', '<leader>gm', '<cmd>Gdiffsplit<cr>')
 
 -- nvimtree keymaps
-map('n', '<leader>ft', '<cmd>NvimTreeToggle<cr>')
+map('n', '<leader>f', '<cmd>NvimTreeToggle<cr>')
