@@ -7,3 +7,5 @@ vim.o.relativenumber = true
 vim.o.smartcase = true
 
 vim.o.autoread = true
+
+vim.o.swapfile = false
