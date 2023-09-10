@@ -283,6 +283,7 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+require('nvim-treesitter.install').prefer_git = true
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
