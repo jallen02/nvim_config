@@ -99,4 +99,8 @@ return function(use)
   use {
     'pasky/claude.vim',
   }
+
+  use {
+    'NMAC427/guess-indent.nvim'
+  }
 end
