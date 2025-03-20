@@ -181,7 +181,7 @@ require('nvim-treesitter.configs').setup {
 
   ignore_install = { 'help' },
   highlight = { enable = true },
-  indent = { enable = true, disable = { 'python' } },
+  indent = { enable = true, disable = { 'python', 'typescript' } },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -379,7 +379,7 @@ mason_lspconfig.setup_handlers {
 }
 
 -- Turn on lsp status information
-require('fidget').setup()
+require('fidget').setup({})
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
@@ -426,4 +426,4 @@ require('custom.keymaps')
 require('custom.settings')
 require('custom.autocmd')
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=4 sts=4 sw=4 et
