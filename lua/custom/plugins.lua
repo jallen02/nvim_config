@@ -45,6 +45,10 @@ return function(use)
 
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
 
+  use 'nvim-tree/nvim-web-devicons'
+
+  use 'rose-pine/neovim'
+
   -- Fancier statusline
   use {
     'nvim-lualine/lualine.nvim',

@@ -46,3 +46,5 @@ require('fidget').setup({})
 -- Enabled lua config for nvim dev
 require('lazydev').setup({})
 
+-- color scheme
+require('rose-pine').setup({})
