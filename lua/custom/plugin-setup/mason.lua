@@ -119,6 +119,25 @@ mason_lspconfig.setup_handlers {
         root_dir = require 'lspconfig'.util.root_pattern('tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js',
           'postcss.config.ts', 'windi.config.ts'),
       }
+    elseif server_name == "ts_ls" then
+      local vue_typescript_plugin_path = vim.fn.stdpath('data')
+        .. '/mason/packages/vue-language-server/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin'
+      require('lspconfig').ts_ls.setup {
+        init_options = {
+          plugins = {
+            {
+              name = '@vue/typescript-plugin',
+              location = vue_typescript_plugin_path,
+              languages = { 'vue' },
+            },
+          },
+        },
+        filetypes = {
+          "vue",
+          "javascript",
+          "typescript",
+        }
+      }
     else
       require('lspconfig')[server_name].setup {
         capabilities = capabilities,
