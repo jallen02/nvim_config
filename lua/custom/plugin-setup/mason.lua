@@ -68,63 +68,9 @@ local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
-  automatic_installation = true,
+  automatic_enable = true,
 }
 
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    if server_name == "rust_analyzer" then
-      require('rust-tools').setup {
-        tools = {
-          inlay_hints = {
-            auto = true,
-          },
-        },
-        server = {
-          on_attach = function (client, bufnr)
-            on_attach(client, bufnr)
-          end,
-          settings = {
-            ["rust-analyzer"] = {
-              checkOnSave = {
-                command = "clippy",
-              }
-            }
-          }
-        }
-      }
-    elseif server_name == "tailwindcss" then
-      require('lspconfig').tailwindcss.setup {
-        filetypes = {
-          "css",
-          "scss",
-          "sass",
-          "postcss",
-          "html",
-          "javascript",
-          "javascriptreact",
-          "typescript",
-          "typescriptreact",
-          "svelte",
-          "vue",
-          "rust",
-        },
-        init_options = {
-          -- There you can set languages to be considered as different ones by tailwind lsp I guess same as includeLanguages in VSCod
-          userLanguages = {
-            rust = "html",
-          },
-        },
-        -- Here If any of files from list will exist tailwind lsp will activate.
-        root_dir = require 'lspconfig'.util.root_pattern('tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js',
-          'postcss.config.ts', 'windi.config.ts'),
-      }
-    else
-      require('lspconfig')[server_name].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = servers[server_name],
-      }
-    end
-  end,
-}
+vim.lsp.config('*', {
+  on_attach = on_attach
+})
