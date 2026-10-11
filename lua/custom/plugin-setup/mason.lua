@@ -19,6 +19,9 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
+--  It's registered via the LspAttach autocmd (not `on_attach` in vim.lsp.config('*')),
+--  because server configs like nvim-lspconfig's rust_analyzer define their own
+--  `on_attach`, which would replace this one.
 local on_attach = function(client, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
@@ -72,7 +75,12 @@ mason_lspconfig.setup {
 
 vim.lsp.config('*', {
   capabilities = capabilities,
-  on_attach = on_attach,
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    on_attach(vim.lsp.get_client_by_id(args.data.client_id), args.buf)
+  end,
 })
 
 -- Apply per-server overrides from the `servers` table above
