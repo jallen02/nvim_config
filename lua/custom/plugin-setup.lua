@@ -56,3 +56,4 @@ require('lazydev').setup({})
 
 -- color scheme
 require('rose-pine').setup({})
+vim.cmd [[colorscheme rose-pine-moon]]

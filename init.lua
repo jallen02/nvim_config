@@ -1,41 +1,29 @@
--- This file comes directly from https://github.com/doublify/pre-commit-rust
--- Any additional configurations should be in separate files that are included at the end of this file.
+-- Entry point. Plugins are managed by lazy.nvim and declared in lua/custom/plugins.lua.
+-- Any additional configuration should be in separate files under lua/custom/.
 
--- Install packer
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-local is_bootstrap = false
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  is_bootstrap = true
-  vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
-  vim.cmd [[packadd packer.nvim]]
-end
+-- Set <space> as the leader key before any plugins or mappings are loaded
+-- See `:help mapleader`
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
-require('packer').startup(function(use)
-  -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
-  local has_plugins, plugins = pcall(require, 'custom.plugins')
-  if has_plugins then
-    plugins(use)
+-- Install lazy.nvim
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.uv.fs_stat(lazypath) then
+  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', 'https://github.com/folke/lazy.nvim.git', lazypath }
+  if vim.v.shell_error ~= 0 then
+    error('Error cloning lazy.nvim:\n' .. out)
   end
-
-  if is_bootstrap then
-    require('packer').sync()
-  end
-end)
-
--- When we are bootstrapping a configuration, it doesn't
--- make sense to execute the rest of the init.lua.
---
--- You'll need to restart nvim, and then it will work.
-if is_bootstrap then
-  print '=================================='
-  print '    Plugins are being installed'
-  print '    Wait until Packer completes,'
-  print '       then restart nvim'
-  print '=================================='
-  return
 end
+vim.opt.rtp:prepend(lazypath)
 
 require('custom.settings')
+
+-- Plugin specs live in ~/.config/nvim/lua/custom/plugins.lua
+require('lazy').setup(require('custom.plugins'), {
+  install = { colorscheme = { 'rose-pine' } },
+  change_detection = { notify = false },
+})
+
 require('custom.autocmd')
 require('custom.plugin-setup')
 require('custom.keymaps')
